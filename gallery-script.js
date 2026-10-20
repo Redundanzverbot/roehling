@@ -1,4 +1,5 @@
 const img = document.getElementById("gallery-img");
+const desc = document.getElementById("gallery-desc");
 const bLeft = document.getElementById("go-left");
 const bRight = document.getElementById("go-right");
 
@@ -17,17 +18,38 @@ const bilder = [
     "images/12.jpg",
 ];
 
-let index = 0;
+const descriptions = [
+    "Das ist die Kurzbeschreibung zu Bild 1", 
+    "Das ist die Kurzbeschreibung zu Bild 2", 
+    "Das ist die Kurzbeschreibung zu Bild 3", 
+    "Das ist die Kurzbeschreibung zu Bild 4", 
+    "Das ist die Kurzbeschreibung zu Bild 5", 
+    "Das ist die Kurzbeschreibung zu Bild 6", 
+    "Das ist die Kurzbeschreibung zu Bild 7", 
+    "Das ist die Kurzbeschreibung zu Bild 8", 
+    "Das ist die Kurzbeschreibung zu Bild 9", 
+    "Das ist die Kurzbeschreibung zu Bild 10", 
+    "Das ist die Kurzbeschreibung zu Bild 11", 
+    "Das ist die Kurzbeschreibung zu Bild 12"
+];
 
-img.src = bilder[0];
+let index = 0;
+update();
+
 
 bLeft.addEventListener("click", function() {
     index = (index - 1 + bilder.length) % bilder.length;
-    img.src = bilder[index];
+    update();
 });
 
 
 bRight.addEventListener("click", function() {
     index = (index +1) % bilder.length;
-    img.src = bilder[index];
+    update();
 });
+
+
+function update() {
+    img.src = bilder[index];
+    desc.textContent = descriptions[index];
+}
