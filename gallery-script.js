@@ -38,18 +38,35 @@ update();
 
 
 bLeft.addEventListener("click", function() {
-    index = (index - 1 + bilder.length) % bilder.length;
-    update();
+    goLeft();
 });
 
 
 bRight.addEventListener("click", function() {
-    index = (index +1) % bilder.length;
-    update();
+    goRight();
 });
 
+
+function goLeft() {
+    index = (index - 1 + bilder.length) % bilder.length;
+    update();
+}
+
+function goRight() {
+    index = (index +1) % bilder.length;
+    update();
+}
 
 function update() {
     img.src = bilder[index];
     desc.textContent = descriptions[index];
 }
+
+
+document.addEventListener("keydown", (event) => {
+    if (event.key == "ArrowLeft"){
+        goLeft();
+    } else if (event.key == "ArrowRight"){
+        goRight();
+    }
+});

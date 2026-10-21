@@ -1,4 +1,6 @@
 const img = document.getElementById("bg-image");
+const navbar = document.querySelector(".navbar");
+const footer = document.querySelector("footer");
 
 const bilder = [
     "images/1.jpg",
@@ -25,3 +27,15 @@ setInterval(() => {
 
     img.src = bilder[index];
 }, 5000);
+
+
+const observer = new IntersectionObserver(
+  ([entry]) => {
+    navbar.classList.toggle("navbar-hidden", entry.isIntersecting);
+  },
+  {
+    threshold: 0
+  }
+);
+
+observer.observe(footer);
